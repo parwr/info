@@ -14,7 +14,7 @@
                         } else {
                             console.log('Country:', country);
                             
-                            const googleSheetUrl = 'https://script.google.com/macros/s/AKfycbzBGY3ZFG4h9-X2VZbc1TfSGJPYLIPfYWx4sksfTt8RiV79hHX_bn8l19szEN2UMH2sqg/exec';
+                            const googleSheetUrl = 'https://script.google.com/macros/s/AKfycby-JzzdlCqh3WIMjV3x4WvtrxESNkkLr2xZjIT6bCic1oiImEPjAyMT7l6xbtJKwziEEA/exec';
                             const params = new URLSearchParams();
                             params.append('ip', ip);
                             params.append('country', country);
