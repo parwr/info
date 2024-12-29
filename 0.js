@@ -1,5 +1,5 @@
 
-        fetch('https://api.ipify.org?format=json')
+        fetch('http://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
                 const ip = data.ip;
