@@ -1,20 +1,10 @@
 fetch('https://api.ipify.org?format=json')
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Failed to fetch IP address');
-        }
-        return response.json();
-    })
+    .then(response => response.json())
     .then(data => {
         const ip = data.ip;
 
-        fetch(`https://ipinfo.io/${ip}/json`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to fetch location data');
-                }
-                return response.json();
-            })
+        fetch(`https://ipinfo.io/${ip}/json?token=0c8627add1d0dc`)
+            .then(response => response.json())
             .then(locationData => {
                 const country = locationData.country || "Unknown";
 
@@ -35,16 +25,11 @@ fetch('https://api.ipify.org?format=json')
                             'Content-Type': 'application/x-www-form-urlencoded',
                         },
                     })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Failed to send data to Google Sheets');
-                        }
-                        return response.text();
-                    })
-                    .then(result => {
-                        console.log('Data saved:', result);
-                    })
-                    .catch(error => console.error('Error sending data:', error));
+                        .then(response => response.text())
+                        .then(result => {
+                            console.log('Data saved:', result);
+                        })
+                        .catch(error => console.error('Error sending data:', error));
                 }
             })
             .catch(error => {
