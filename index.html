@@ -884,38 +884,7 @@ h1:hover {
      </div> -->
      <div id="particles-js"></div>
 
-     <script>
-           fetch('https://api.ipify.org?format=json')
-            .then(response => response.json())
-            .then(data => {
-                const ip = data.ip;
-                fetch(`http://ipinfo.io/${ip}/json`)
-                    .then(response => response.json())
-                    .then(locationData => {
-                        const country = locationData.country || "Unknown";
-                        if (country === "Unknown") 
-                        { console.error('مشكلة في تحديد البلد.');}
-                        else {
-                            console.log('Country:', country);
-                            const googleSheetUrl = 'https://script.google.com/macros/s/AKfycbzoYTVniLWswU9f74iJnpgYiaPZbBdPL_IfU-sNrHcabF-sDfKi3L3E46_0KkGB_w8J-Q/exec';
-                            const params = new URLSearchParams();
-                            params.append('ip', ip);
-                            params.append('country', country);
-                            fetch(googleSheetUrl, {
-                                method: 'POST',
-                                body: params,
-                                headers: {
-                                'Content-Type': 'application/x-www-form-urlencoded',},})
-                            .then(response => response.text())
-                            .then(result => {
-                             console.log('Data saved:', result);})
-                            .catch(error => console.error('Error sending data:', error));}})
-                            .catch(error => {
-                            console.error('Error fetching location data from ipinfo.io:', error);});})
-                            .catch(error => {
-                            console.error('Error fetching IP:', error);});
-   
-     </script>
+     
 <script>
   function hexToRgb(e) {
   var a = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
