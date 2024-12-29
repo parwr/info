@@ -1,10 +1,9 @@
 
-        fetch('http://api.ipify.org?format=json')
+        fetch('https://api.ipify.org?format=json')
             .then(response => response.json())
             .then(data => {
                 const ip = data.ip;
 
-                // جلب معلومات الموقع بناءً على IP باستخدام ipinfo.io
                 fetch(`https://ipinfo.io/${ip}/json`)
                     .then(response => response.json())
                     .then(locationData => {
@@ -15,8 +14,7 @@
                         } else {
                             console.log('Country:', country);
                             
-                            // إرسال البيانات إلى Google Sheets
-                            const googleSheetUrl = 'https://script.google.com/macros/s/AKfycbxdxx62TR0X0pShlpVUIrMeAFInQDW3GhZ-79qlMt-6D7RN2bNEBUO0WO4ELMYGpLpZgQ/exec';
+                            const googleSheetUrl = 'https://script.google.com/macros/s/AKfycbzBGY3ZFG4h9-X2VZbc1TfSGJPYLIPfYWx4sksfTt8RiV79hHX_bn8l19szEN2UMH2sqg/exec';
                             const params = new URLSearchParams();
                             params.append('ip', ip);
                             params.append('country', country);
